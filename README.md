@@ -55,7 +55,7 @@ This table is called the <b>stoichiometry matrix</b>, it illustrates how all the
 <h4>Michaelis-Menten Enzyme Kinetics</h4>
 <p>This is one of the best-known representation of enzyme kinetics (according to Wikipedia). It describes the rate of enzymatic reactions by correlating the reaction rate <em>v</em> to concentration of substrate <em>S</em>.
     
-<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}v=\frac{SV}{S + K_m}\end{equation*}>
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}v=\frac{SV}{S + K_m}\end{equation*}">
     
 <br>The <em>v</em> is a vector (an object with magnitude and direction) of enzyme kinetic functions, namely reaction rate (this is important for later). The upper case <em>V</em> is the <i>limiting rate</i> (or maximum velocity, <em>V<sub>m</sub></em>) and <em>K<sub>m</sub></em> is the <em>Michaelis constant</em> (concentration of substrate when the reaction velocity is equal to one half the maximal velocity of the reaction). The reasoning for a rate limiting velocity is that if an intermediate step is much slower than the other reactions, the overall rate of the net reaction will equal the rate of the slowest step (namely the rate limiting step). The implication being that increasing the concentration of the rate limiting enzyme should increase the net flux through the pathway.
     

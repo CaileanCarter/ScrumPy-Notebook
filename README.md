@@ -53,7 +53,7 @@ This table is called the <b>stoichiometry matrix</b>, it illustrates how all the
 
 
 <h4>Michaelis-Menten Enzyme Kinetics</h4>
-<p>This is one of the best-known representation of enzyme kinetics (according to Wikipedia). It describes the rate of enzymatic reactions by correlating the reaction rate <em>v</em> to concentration of substrate <em>S</em>.
+<p>This is one of the best-known representation of enzyme kinetics (according to Wikipedia). It describes the rate of enzymatic reactions by correlating the reaction rate <em>v</em> to concentration of substrate <em>S</em>. <br>
     
 <img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}v=\frac{SV}{S + K_m}\end{equation*}">
     
@@ -61,16 +61,12 @@ This table is called the <b>stoichiometry matrix</b>, it illustrates how all the
     
 In a kinetic model, each substrate is tied to at least one reaction, and those reactions will have an enzyme kinetic vector. We can map how each substrate relates to its surrounding enzymes' vectors using the network described in Structural modelling. Let's take S<sub>1</sub> (substrate 1) for example, its concentration gains from reactions 1 and 3, and decreases from reaction 2. If we take the enzyme kinetics associated with each reaction, we can represent it as:</p><br><br>
     
-\begin{equation*}
-    \frac{dS_1}{dt} = v_1 - v_2 + v_3
-\end{equation*}
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\frac{dS_1}{dt}=v_1-v_2+v_3\end{equation*}">
     
 <br> This equation is rather simplistic, showing how our substrate is influenced by the kinetic vector of its associated reactions. For substrates 2 and 3, it will look like this:<br><br>
     
-\begin{equation*}
-    \frac{dS_2}{dt} = v_2 - v_3 - v_4 - v_5 \\
-    \frac{dS_3}{dt} = v_5
-\end{equation*}
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\frac{dS_2}{dt}=v_2-v_3-v_4-v_5\\\frac{dS_3}{dt}=v_5\end{equation*}">
+
  <p>Next we will be discussing how kinetic models relate to structural models.</p>
 
 <h3>Relating Kinetic and Structural Models</h3>

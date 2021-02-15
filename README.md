@@ -75,29 +75,7 @@ In a kinetic model, each substrate is tied to at least one reaction, and those r
     
 We can observe the relationship between structural and kinetics in the following equation. The structural element is represented by the stoichiometry matrix for the substrates mentioned in the structural section, and the kinetics are represented by the enzyme kinetic vectors from the Michaelis-Menten equation.   
 </p>
-\begin{equation*}
-\left[
-\begin{matrix}
-\frac{dS_1}{dt}\\
-\frac{dS_2}{dt}\\
-\frac{dS_3}{dt}\\
-\end{matrix}
-\right]
-=
-\left[
-\begin{matrix} 
-    1 & -1 & 1 & 0 & 0\\
-    0 & 1 & -1 & -1 & -1\\
-    0 & 0 & 0 & 0 & 1\\
-\end{matrix} 
-\right]
-\cdot
-\left[
-\begin{matrix}
-    v_1\\ v_2\\ v_3\\ v_4\\ v_5\\
-\end{matrix}
-\right]
-\end{equation*}
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\left[\begin{matrix}\frac{dS_1}{dt}\\\frac{dS_2}{dt}\\\frac{dS_3{dt}\\\end{matrix}\right]=\left[\begin{matrix} 1 & -1 & 1 & 0 & 0\\0 & 1 & -1 & -1 & -1\\0 & 0 & 0 & 0 & 1\\\end{matrix} \right]\cdot\left[\begin{matrix}v_1\\ v_2\\ v_3\\ v_4\\ v_5\\\end{matrix}\right]\end{equation*}>
     
 <p>You may recall from the stoichiometry matrix that each number in a row (for each substrate) is associated with the change in metabolite concentration for each reaction (r1 to r5). As the stoichiometry matrix is a trinary of 1, 0 and -1, we can easily multiply the enzyme kinetic vectors to their respective reaction in the matrix. This will provide a matrix illustrating the enzyme kinetics for each reaction in our structural model, therefore relating kinetics and structural elements. When the condition is steady state, the final result will always equal 0 (just count all the numbers in the stoichiometry matrix, you'll see). A structural model involves exploring solutions of this equation, with <em>v<sub>i</sub></em> as the unknown variables. As this equation is linear, it allows one to distinguish between feasible and non-feasible states of the network (i.e. you will be able to tell what pathways are possible).</p><hr />
 
@@ -111,18 +89,7 @@ We can observe the relationship between structural and kinetics in the following
 <b>Possibility 2</b> &nbsp; S<sub>1</sub> to S<sub>2</sub> and back again = [0 1 1 0 0]</blockquote>        
 It is worth noting that null space is not the same as a stoichiometry matrix, null space focuses on the combination of possibilities a metabolite can travel in steady state and emphasises reactions. Any set of combinations at steady state will be a linear combination of vectors called <b>K</b> (<em>the kernel matrix</em>), which is a general term for null space and encapsulates all possible steady-state solutions. Thus, for our basic network the null space looks like this:<br><br>
 
-\begin{equation*}
-\mathbf{K} = 
-\left[
-\begin{matrix}
-1 & 0 \\
-1 & 1 \\
-0 & 1 \\
-1 & 0 \\
-0 & 0 \\
-\end{matrix}
-\right]
-\end{equation*}
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\mathbf{K} = \left[\begin{matrix}1 & 0 \\1 & 1 \\0 & 1 \\1 & 0 \\0 & 0 \\\end{matrix}\right]\end{equation*}>
 
 <br>Null space establishes the relationships between reaction fluxes. However, there are some disadvantages to null-space analysis: (1) provides a rather unfocussed view of a system; (2) does not implicitly take into account thermodynamics; (3) hard to integrate experimental flux observations; (4) less interpretable for large (genome-scale) models.
 

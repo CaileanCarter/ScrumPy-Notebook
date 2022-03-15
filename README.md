@@ -75,7 +75,7 @@ In a kinetic model, each substrate is tied to at least one reaction, and those r
     
 We can observe the relationship between structural and kinetics in the following equation. The structural element is represented by the stoichiometry matrix for the substrates mentioned in the structural section, and the kinetics are represented by the enzyme kinetic vectors from the Michaelis-Menten equation.   
 </p>
-<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\left[\begin{matrix}\frac{dS_1}{dt}\\\frac{dS_2}{dt}\\\frac{dS_3{dt}\\\end{matrix}\right]=\left[\begin{matrix} 1 & -1 & 1 & 0 & 0\\0 & 1 & -1 & -1 & -1\\0 & 0 & 0 & 0 & 1\\\end{matrix} \right]\cdot\left[\begin{matrix}v_1\\ v_2\\ v_3\\ v_4\\ v_5\\\end{matrix}\right]\end{equation*}>
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\left[\begin{matrix}\frac{dS_1}{dt}\\\frac{dS_2}{dt}\\\frac{dS_3{dt}\\\end{matrix}\right]=\left[\begin{matrix} 1 & -1 & 1 & 0 & 0\\0 & 1 & -1 & -1 & -1\\0 & 0 & 0 & 0 & 1\\\end{matrix} \right]\cdot\left[\begin{matrix}v_1\\ v_2\\ v_3\\ v_4\\ v_5\\\end{matrix}\right]\end{equation*}">
     
 <p>You may recall from the stoichiometry matrix that each number in a row (for each substrate) is associated with the change in metabolite concentration for each reaction (r1 to r5). As the stoichiometry matrix is a trinary of 1, 0 and -1, we can easily multiply the enzyme kinetic vectors to their respective reaction in the matrix. This will provide a matrix illustrating the enzyme kinetics for each reaction in our structural model, therefore relating kinetics and structural elements. When the condition is steady state, the final result will always equal 0 (just count all the numbers in the stoichiometry matrix, you'll see). A structural model involves exploring solutions of this equation, with <em>v<sub>i</sub></em> as the unknown variables. As this equation is linear, it allows one to distinguish between feasible and non-feasible states of the network (i.e. you will be able to tell what pathways are possible).</p><hr />
 
@@ -89,36 +89,13 @@ We can observe the relationship between structural and kinetics in the following
 <b>Possibility 2</b> &nbsp; S<sub>1</sub> to S<sub>2</sub> and back again = [0 1 1 0 0]</blockquote>        
 It is worth noting that null space is not the same as a stoichiometry matrix, null space focuses on the combination of possibilities a metabolite can travel in steady state and emphasises reactions. Any set of combinations at steady state will be a linear combination of vectors called <b>K</b> (<em>the kernel matrix</em>), which is a general term for null space and encapsulates all possible steady-state solutions. Thus, for our basic network the null space looks like this:<br><br>
 
-<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\mathbf{K} = \left[\begin{matrix}1 & 0 \\1 & 1 \\0 & 1 \\1 & 0 \\0 & 0 \\\end{matrix}\right]\end{equation*}>
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\mathbf{K} = \left[\begin{matrix}1 & 0 \\1 & 1 \\0 & 1 \\1 & 0 \\0 & 0 \\\end{matrix}\right]\end{equation*}">
 
 <br>Null space establishes the relationships between reaction fluxes. However, there are some disadvantages to null-space analysis: (1) provides a rather unfocussed view of a system; (2) does not implicitly take into account thermodynamics; (3) hard to integrate experimental flux observations; (4) less interpretable for large (genome-scale) models.
 
 Thus far, we have explored the structural aspect of null space. However, it can be combined with kinetics similarly to how it was done with the stoichiometry matrix. We can assign an arbitrary notation to each possibility, <em>a</em> and <em>b</em>, with our first possibility on the left and second on the right of the matrix.<br>
 
-\begin{equation*}
-\left[ 
-\begin{matrix}
-    1 & 0\\ 1 & 1\\ 0 & 1\\ 1 & 0\\ 0 & 0\\
-\end{matrix} 
-\right] 
-\cdot 
-\left[ 
-\begin{matrix}
-    a\\
-    b\\
-\end{matrix} 
-\right] = 
-\left[ 
-\begin{matrix}
-    a\\ a+b\\ b\\ a\\ 0\\
- \end{matrix} 
- \right] = 
- \left[ 
- \begin{matrix}
-    v_1\\ v_2\\ v_3\\ v_4\\ v_5\\
-\end{matrix} 
-\right]
-\end{equation*}
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\left[\begin{matrix} 1 & 0\\ 1 & 1\\ 0 & 1\\ 1 & 0\\ 0 & 0\\ \end{matrix} \right] \cdot \left[ \begin{matrix} a\\ b\\ \end{matrix} \right] = \left[ \begin{matrix} a\\ a+b\\ b\\ a\\ 0\ \end{matrix} \right] = \left[ \begin{matrix} v_1\\ v_2\\ v_3\\ v_4\\ v_5\\ \end{matrix} \right] \end{equation*}">
 
 This representation allows us to see which reaction vectors are unique to each possibility, which are called subsets (<em>a set of reactions carrying flux in fixed ratios and a single net stoichiometry</em>). We can see that the first and fourth row are unique to possibility <em>a</em>. The last row is considered a dead vector; a reaction which can not carry flux at steady-state. If any single reaction is removed from a subset, the remaining reactions will be dead. If one or more reactions in a subset are irreversible, the whole subset is irreversible. 
 
@@ -158,11 +135,8 @@ Elementary modes are useful to identify in any given reaction, particularly for 
 <br>
 <h4>Theory of Analysing a Metabolic Network</h4>
 <p>The first principle of analysing a metabolic network is mass conversion. Within any given network, no mass can be lost or gained from nothing. The general equation to describe mass conversion of metabolites can be written as:
-  
-\begin{equation*}
-\frac{d}{dt}\underline{C} = 
-\underline{\underline{S}} \cdot \underline{r} - \mu \cdot \underline{C}
-\end{equation*}
+ 
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*}\frac{d}{dt}\underline{C} = \underline{\underline{S}} \cdot \underline{r} - \mu \cdot \underline{C} \end{equation*}">
 <ul>
     <li>$\frac{d}{dt}$ <i>is the instantaneous rate of change of a particular physical quantity</i></li><br>
     <li>$\underline{C}$ <i>is the concentration</i> (mol/L) <i>vector of <em>m</em> internal metabolites</i></li><br>
@@ -197,18 +171,16 @@ Under steady state, there is no accumulation of internal metabolites and therefo
 Glucose - Oxygen - Ammonia + Lysine + Carbon Dioxide + Water = 0</blockquote>
 <p>This is quite different from a typical balanced representation of a reaction (this equation isn't balanced for starters). The zero implies there is no net loss or gain of elements as they have all been converted into another molecule (obeying laws of mass conversion). The equation is not balanced as you can see it would take two ammonia to meet the nitrogen requirement for lysine.<br><br>
     
-Let's explore reaction balancing a bit further. Starting with Nitrogen (N), we would need two ammonia for the equation to balance $-c+2=0$. The number 2 represents the number atoms of that element are present in lysine, and <em>c</em> refers to ammonia (which is also 2 to balance the equation).
+Let's explore reaction balancing a bit further. Starting with Nitrogen (N), we would need two ammonia for the equation to balance <img src="https://render.githubusercontent.com/render/math?math=-c+2=0">. The number 2 represents the number atoms of that element are present in lysine, and <em>c</em> refers to ammonia (which is also 2 to balance the equation).
     
-<br>The balanced equation for hydrogen (H) is: $$a = \frac{e+4}{6}$$
+<br>The balanced equation for hydrogen (H) is: <img src="https://render.githubusercontent.com/render/math?math=a = \frac{e+4}{6}">
 <br>For one molecule of glucose (<em>a</em>), one hydrogen per ammonia is given to lysine and two hydrogen towards water (meaning <em>e</em> is 2) which balances the equation. 
     
 For carbon (<em>C</em>) to balance, it is carbon dioxide (<em>d</em>) in relation to glucose (<em>a</em>) - which somehow works.<br>
 For oxygen (O) to balance, substituting <em>a</em>, <em>c</em> and <em>d</em> gives $b=e-3$. If we assume <em>b</em> cannot be negative (no oxygen evolution) then <em>e</em> &#8805; 3. 
 
 By using these kinds of equations, we can work out the largest theoretical molar yield of lysine per glucose. We will represent lysine as <em>1</em> and glucose as <em>a</em> as per our equation:
-\begin{equation*} 
-    \frac{1}{a} = \frac{6}{e+4} = \frac{6}{7} = 86\% 
-\end{equation*}
+<img src="https://render.githubusercontent.com/render/math?math=\begin{equation*} \frac{1}{a} = \frac{6}{e+4} = \frac{6}{7} = 86\% \end{equation*}">
     
 This is how we can start to apply modelling to biotechnology and manipulate the model to find ways of improving yield.</p><hr />
     
@@ -394,8 +366,8 @@ for r in filter(lambda s: s.endswith("_tx"), sol):
 &nbsp; &nbsp; 4NADH + 9H<sub>i</sub><sup>+</sup> + 2O<sub>2</sub> + 5ADP + 5P<sub>i</sub> -> 4NAD + 9H<sub>2</sub>O + 5ATP<br>
 Giving a P/O ration of 1.25 which compares to reported value of 1.33. In their methodology, they used linear programming (FBA) on ATP synthesis:<br>
     
-minimise : $|v|$ (objective function)<br>
-subject to $\begin{cases} N_v = 0 & \quad \text{(steady state)} \\ v_j = t_j;0\leq j \leq X  & \quad \text{(biomass production)} \end{cases}$ <br>
+minimise : <img src="https://render.githubusercontent.com/render/math?math=|v|"> (objective function)<br>
+subject to <img src="https://render.githubusercontent.com/render/math?math=$\begin{cases} N_v = 0 & \quad \text{(steady state)} \\ v_j = t_j;0\leq j \leq X  & \quad \text{(biomass production)} \end{cases}$"> <br>
     
 Their objective was to minimise the sum of all fluxes to the steady-state constraint (no metabolites allowed to accumulate) and producing the X biomass precursors at a rate determined by their relative abundance specified in the vector <em>t</em>, which collects the experimentally determined concentrations of all major biomass components, multiplied by a growth rate. The authors note that it is possile for the model to violate laws of energy conservation as a result of reactions with incorrectly defined directionality or reversibility leading to cycles that can generate ATP with no net consumption of substrate. Therefore, they modified the equation above to test for such conditions:<br>
 
